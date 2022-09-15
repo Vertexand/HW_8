@@ -48,7 +48,7 @@ void PrintRepeatsOfElements(int[,] matrix)
             repeats[matrix[i, j]]++;//взять repeats по индексу наш массива 
         }
     }
-    for (int i = 0; i < repeats.Length; i++)// это длина нов массива
+    for (int i = 0; i < repeats.Length; i++)// это длина нов массива 0, 1, .. 9
     {
         if (repeats[i] > 0)//колич повтор элемента
         {

@@ -8,9 +8,8 @@
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей
 //  суммой элементов: 1 строка 
 
-int[,] ourMatrix = GetMatrix(3, 4, -10, 10);
-PrintMatrix(ourMatrix);
-
+int[,] Matr = GetMatrix(3, 4, 1, 9);
+PrintMatrix(Matr);
 
 int[,] GetMatrix(int rowsCount, int columnsCount, int leftRange, int rightRange)
 {
@@ -25,7 +24,6 @@ int[,] GetMatrix(int rowsCount, int columnsCount, int leftRange, int rightRange)
             matrix[i, j] = rand.Next(leftRange, rightRange);
         }
     }
-
     return matrix;
 }
 void PrintMatrix(int[,] matrix)
@@ -39,18 +37,98 @@ void PrintMatrix(int[,] matrix)
         Console.WriteLine();
     }
 }
+void SummLines(int[,] matrix)
+{
+    int sum = int.MaxValue;
+    int index = 0;
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        int temp = 0;
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            temp += matrix[i, j];
+        }
+        if (temp < sum)
+        {
+            sum = temp;
+            index = i;
+        }
+    }
+    Console.WriteLine("" + index + " Строка, Сумма  " + sum);
+    // for (int i = 0; i < matrix.GetLength(1); i++)
+    // {
+    //     Console.Write(matrix[index, i] + " "); // запомнить
+    // }
+}
+SummLines(Matr);
 
-// void SwapFirsAndLastRows(int[,] matrix)//на вход ожидаем int[,] matrix
-// {
-//     for (int j = 0; j < matrix.GetLength(1); j++)
-//     {
-//         int temp = matrix[0, j];
-//         matrix[0, j] = matrix[matrix.GetLength(0) - 1, j];  //общее кол строк -1 получим послед индекс строки
-//         matrix[matrix.GetLength(0) - 1, j] = temp;
-//     }
-// }
 
 
-// SwapFirsAndLastRows(ourMatrix);
-// Console.WriteLine();
-// PrintMatrix(ourMatrix);
+
+
+
+/* Console.WriteLine($"\nВведите размер массива m x n и диапазон случайных значений:");//пример из интер
+int m = InputNumbers("Введите m: ");
+int n = InputNumbers("Введите n: ");
+int range = InputNumbers("Введите диапазон: от 1 до ");
+
+int[,] array = new int[m, n];
+CreateArray(array);
+WriteArray(array);
+
+int minSumLine = 0;
+int sumLine = SumLineElements(array, 0);
+for (int i = 1; i < array.GetLength(0); i++)
+{
+  int tempSumLine = SumLineElements(array, i);
+  if (sumLine > tempSumLine)
+  {
+    sumLine = tempSumLine;
+    minSumLine = i;
+  }
+}
+
+Console.WriteLine($"{minSumLine+1} - строкa с наименьшей суммой ({sumLine}) элементов ");
+
+
+int SumLineElements(int[,] array, int i)
+{
+  int sumLine = array[i,0];
+  for (int j = 1; j < array.GetLength(1); j++)
+  {
+    sumLine += array[i,j];
+  }
+  return sumLine;
+}
+
+int InputNumbers(string input)
+{
+  Console.Write(input);
+  int output = Convert.ToInt32(Console.ReadLine());
+  return output;
+}
+
+void CreateArray(int[,] array)
+{
+  for (int i = 0; i < array.GetLength(0); i++)
+  {
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+      array[i, j] = new Random().Next(range);
+    }
+  }
+}
+
+void WriteArray (int[,] array)
+{
+  for (int i = 0; i < array.GetLength(0); i++)
+  {
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+      Console.Write(array[i,j] + " ");
+    }
+    Console.WriteLine();
+  }
+} */
+
+// Console.ReadKey(); в каких случаях??
