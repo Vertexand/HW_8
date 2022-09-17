@@ -3,7 +3,51 @@
 // массив размером 2 x 2 x 2 
 // 12(0,0,0) 22(0,0,1) 
 // 45(1,0,0) 53(1,0,1) 
-Console.WriteLine($"\nВведите размер массива X x Y x Z:");
+
+int[,,] GetMatrix(int rowsCount, int columnsCount, int YCount, int leftRange, int rightRange)
+{
+    int[,,] matrix = new int[rowsCount, columnsCount, YCount];
+
+    Random rand = new Random();
+
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            for (int k = 0; k < matrix.GetLength(2); k++)
+            {
+                matrix[i, j, k] = rand.Next(leftRange, rightRange);
+            }
+        }
+        return matrix;
+    }
+}
+void PrintMatrix(int[,,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)//кол столбцов
+        {
+            for (int k = 0; k < matrix.GetLength(2); k++)
+            {
+                // Console.Write(matrix[i, j, k] + " ");
+                Console.WriteLine($"{matrix[i,j,k]} {i} {j} {k} + "");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+int[,,] ourMatrix = GetMatrix(2, 2, 2, 10, 100);
+PrintMatrix(ourMatrix);
+
+
+
+
+
+
+
+
+/* Console.WriteLine($"\nВведите размер массива X x Y x Z:");
 int x = InputNumbers("Введите X: ");
 int y = InputNumbers("Введите Y: ");
 int z = InputNumbers("Введите Z: ");
@@ -72,3 +116,17 @@ void CreateArray(int[,,] array3D)
     }
   }
 }
+ */
+
+
+
+
+// Console.WriteLine("Введите число");//иван
+// int N = Convert.ToInt32(Console.ReadLine());
+// GetBinaryView(N);//вызов метода важно 
+
+// void GetBinaryView(int number)// ожидаем на ВХОДЕ number вопрос ведь можно на N  заменить?
+// {
+//     if (number <= 0) return;//останов рекурсию выйдем из функции командой return
+//     GetBinaryView(number / 2);//вызов метода внутри метода это рекурсия
+//     Console.Write(number % 2);

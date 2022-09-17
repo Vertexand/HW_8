@@ -5,68 +5,44 @@
 // 11 16 15 6 
 // 10 9 8 7 
 
-int n = 4;
-int[,] sqareMatrix = new int[n, n];
 
+
+int[,] ourMatrix = GetMatrix(4, 4 ); 
+PrintMatrix(ourMatrix); 
+
+int[,] GetMatrix(int rowsCount, int columnsCount) 
+{
+  int[,] matrix = new int[rowsCount, columnsCount]; 
 int temp = 1;
 int i = 0;
 int j = 0;
-
-while (temp <= sqareMatrix.GetLength(0) * sqareMatrix.GetLength(1))
+while (temp <= matrix.GetLength(0) * matrix.GetLength(1))
 {
-  sqareMatrix[i, j] = temp;
+  matrix[i, j] = temp;
   temp++;
-  if (i <= j + 1 && i + j < sqareMatrix.GetLength(1) - 1)
+  if (i <= j + 1 && i + j < matrix.GetLength(1) - 1)//коорд по столбцу
     j++;
-  else if (i < j && i + j >= sqareMatrix.GetLength(0) - 1)
+  else if (i < j && i + j >= matrix.GetLength(0) - 1)//коорд по строке
     i++;
-  else if (i >= j && i + j > sqareMatrix.GetLength(1) - 1)
+  else if (i >= j && i + j > matrix.GetLength(1) - 1)
     j--;
   else
     i--;
 }
-
-WriteArray(sqareMatrix);
-
-void WriteArray (int[,] array)
-{
-  for (int i = 0; i < array.GetLength(0); i++)
-  {
-    for (int j = 0; j < array.GetLength(1); j++)
-    {
-      if (array[i,j] / 10 <= 0)
-      Console.Write($" {array[i,j]} ");
-
-      else Console.Write($"{array[i,j]} ");
-    }
-    Console.WriteLine();
-  }
+return matrix;
 }
 
-/* int[,] GetMatrix(int rowsCount, int columnsCount, int leftRange, int rightRange)
+ void PrintMatrix(int[,] matrix)
 {
-    int[,] matrix = new int[rowsCount, columnsCount];
-
-    Random rand = new Random();
-
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            matrix[i, j] = rand.Next(leftRange, rightRange);
-        }
-    }
-
-    return matrix;
-}
-void PrintMatrix(int[,] matrix)
-{
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)//кол столбцов
         {
             Console.Write(matrix[i, j] + " ");
         }
         Console.WriteLine();
     }
-} */
+}
+
+
+

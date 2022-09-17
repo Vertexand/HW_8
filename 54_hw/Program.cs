@@ -43,7 +43,7 @@ void MatrixLines(int[,] matrix)
         {
             for (int k = 0; k < matrix.GetLength(1) - 1; k++)
             {
-                if (matrix[i, k] > matrix[i, k + 1])//ВОПРОС привил ли я поним цикл, 
+                if (matrix[i, k] > matrix[i, k + 1])//ВОПРОС правил ли я поним цикл, 
                 // напр. стр 9438, 1-й проход ->3948, 2->3498. 3->3489?
                 {
                     int temp = matrix[i, k + 1];
